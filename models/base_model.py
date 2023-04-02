@@ -1,15 +1,15 @@
 #!/usr/bin/python3
-""" Class BaseModel """
+"""Class BaseModel"""
 from datetime import datetime
 from uuid import uuid4
 import models
 
 
 class BaseModel:
-    """ construct """
+    """construct"""
 
     def __init__(self, *args, **kwargs):
-        """ Construct """
+        """Construct"""
         if kwargs:
             if 'id' not in kwargs.keys():
                 self.id = str(uuid4())
