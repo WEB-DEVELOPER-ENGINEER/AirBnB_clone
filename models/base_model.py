@@ -12,13 +12,12 @@ class BaseModel:
         """Construct"""
         if kwargs:
             for key, value in kwargs.items():
-                if key == '__class__':
-                    continue
+                if key != '__class__':
+                    setattr(self, key, value)
                 elif key == 'updated_at':
                     value = datetime.strptime(value, "%Y-%m-%dT%H:%M:%S.%f")
                 elif key == 'created_at':
                     value = datetime.strptime(value, "%Y-%m-%dT%H:%M:%S.%f")
-                setattr(self, key, value)
         else:
             self.id = str(uuid4())
             self.created_at = datetime.now()
