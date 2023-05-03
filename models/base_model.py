@@ -26,8 +26,8 @@ class BaseModel:
 
     def __str__(self):
         """print: [<class name>] (<self.id>) <self.__dict__>"""
-        return('[' + type(self).__name__ + '] (' + str(self.id) +
-               ') ' + str(self.__dict__))
+        stri = "[{:s}] ({:s}) {}"
+        return stri.format(type(self).__name__, self.id, self.__dict__)
 
     def save(self):
         """updates the attribute updated_at with the current datetime"""
