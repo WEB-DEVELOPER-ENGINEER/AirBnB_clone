@@ -10,7 +10,7 @@ class BaseModel:
     """construct"""
 
     def __init__(self, *args, **kwargs):
-        """Construct"""
+        """Initialization"""
         if kwargs:
             for key, value in kwargs.items():
                 if key == "created_at" or key == "updated_at":
