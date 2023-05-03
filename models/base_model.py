@@ -10,7 +10,7 @@ class BaseModel:
 
     def __init__(self, *args, **kwargs):
         """Construct"""
-        if kwargs:
+        if kwargs != {}:
             for key, value in kwargs.items():
                 if key == "created_at" or key == "updated_at":
                     val = datetime.strptime(value, "%Y-%m-%dT%H:%M:%S.%f")
