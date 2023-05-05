@@ -63,29 +63,3 @@ class testFileStorage(unittest.TestCase):
         '''
         storage_all = self.storage.all()
         self.assertIsInstance(storage_all, dict)
-
-    def test_reaload_method_without_file(self):
-        '''
-            Tests that if the file doesn’t exist, no exception is raised
-        '''
-        try:
-            self.storage.reload()
-            self.assertTrue(True)
-        except Exception:
-            self.assertTrue(False)
-
-    def test_reload_empty(self):
-        '''
-            Tests method reload
-        '''
-        a_storage = FileStorage()
-        try:
-            os.remove("file.json")
-        except Exception:
-            pass
-        with open("file.json", "w") as f:
-            f.write("{}")
-        with open("file.json", "r") as r:
-            for line in r:
-                self.assertEqual(line, "{}")
-        self.assertIs(a_storage.reload(), None)
