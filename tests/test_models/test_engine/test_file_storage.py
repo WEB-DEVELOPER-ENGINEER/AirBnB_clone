@@ -63,3 +63,13 @@ class testFileStorage(unittest.TestCase):
         '''
         storage_all = self.storage.all()
         self.assertIsInstance(storage_all, dict)
+
+    def test_reaload_method_without_file(self):
+        '''
+            Tests that if the file doesn’t exist, no exception is raised
+        '''
+        try:
+            self.storage.reload()
+            self.assertTrue(True)
+        except Exception:
+            self.assertTrue(False)
