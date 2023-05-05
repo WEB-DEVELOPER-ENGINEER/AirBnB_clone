@@ -73,3 +73,19 @@ class testFileStorage(unittest.TestCase):
             self.assertTrue(True)
         except Exception:
             self.assertTrue(False)
+
+    def test_reload_empty(self):
+        '''
+            Tests method reload
+        '''
+        a_storage = FileStorage()
+        try:
+            os.remove("file.json")
+        except Exception:
+            pass
+        with open("file.json", "w") as f:
+            f.write("{}")
+        with open("file.json", "r") as r:
+            for line in r:
+                self.assertEqual(line, "{}")
+        self.assertIs(a_storage.reload(), None)
