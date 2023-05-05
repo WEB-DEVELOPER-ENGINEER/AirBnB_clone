@@ -40,3 +40,12 @@ class testFileStorage(unittest.TestCase):
         self.storage.new(self.model)
         key = str(self.model.__class__.__name__ + "." + self.model.id)
         self.assertTrue(key in self.storage._FileStorage__objects)
+
+    def test_objects_type(self):
+        '''
+            Tests the type of objects
+        '''
+        self.storage.new(self.model)
+        key = str(self.model.__class__.__name__ + "." + self.model.id)
+        value = self.storage._FileStorage__objects[key]
+        self.assertIsInstance(self.model, type(value))
