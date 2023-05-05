@@ -1,7 +1,7 @@
 #!/usr/bin/python3
 
 '''
-    All the test for the base_model
+    Tests for the base_model
 '''
 
 import unittest
