@@ -49,3 +49,10 @@ class testFileStorage(unittest.TestCase):
         key = str(self.model.__class__.__name__ + "." + self.model.id)
         value = self.storage._FileStorage__objects[key]
         self.assertIsInstance(self.model, type(value))
+
+    def test_save_exists(self):
+        '''
+            Tests that the file file.json gets created
+        '''
+        self.storage.save()
+        self.assertTrue(os.path.isfile("file.json"))
