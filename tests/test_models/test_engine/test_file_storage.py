@@ -56,3 +56,10 @@ class testFileStorage(unittest.TestCase):
         '''
         self.storage.save()
         self.assertTrue(os.path.isfile("file.json"))
+
+    def test_all_method(self):
+        '''
+            Tests the return type of the method all
+        '''
+        storage_all = self.storage.all()
+        self.assertIsInstance(storage_all, dict)
