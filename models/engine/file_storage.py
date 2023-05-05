@@ -34,6 +34,6 @@ class FileStorage:
             for key, val in FileStorage.__objects.items():
                 class_name = val["__class__"]
                 class_name = models.classes[class_name]
-                FileStorage.__objects[key] = class_name(**val)
+                FileStorage.__objects[key] = eval(class_name(**val))
         except FileNotFoundError:
             pass
