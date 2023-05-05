@@ -28,12 +28,10 @@ class FileStorage:
 
     def reload(self):
         """Deserialize the JSON file __file_path to __objects, if it exists"""
-        try:
-            with open(FileStorage.__file_path, encoding="UTF8") as fd:
-                FileStorage.__objects = json.load(fd)
-                for key, val in FileStorage.__objects.items():
-                    class_name = val["__class__"]
-                    class_name = models.classes[class_name]
-                    FileStorage.__objects[key] = eval(class_name(**val))
-        except FileNotFoundError:
-            pass
+        if (os.path.isfile(FileStorage.__file_path)):
+            with open(FileStorage.__file_path) as f:
+                FileStorage.__objects = json.load(f)
+                for o in FileStorage.__objects.values():
+                    cls_name = o["__class__"]
+                    del o["__class__"]
+                    self.new(eval(cls_name)(**o))
