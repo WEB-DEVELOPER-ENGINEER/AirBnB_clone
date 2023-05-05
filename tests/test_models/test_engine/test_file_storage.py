@@ -63,3 +63,13 @@ class testFileStorage(unittest.TestCase):
         '''
         storage_all = self.storage.all()
         self.assertIsInstance(storage_all, dict)
+
+    def test_save_file_read(self):
+        '''
+            Testing the contents of the file file.json
+        '''
+        self.storage.save()
+        self.storage.new(self.model)
+        with open("file.json", encoding="UTF8") as fd:
+            content = json.load(fd)
+        self.assertTrue(type(content) is dict)
