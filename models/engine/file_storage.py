@@ -32,7 +32,7 @@ class FileStorage:
             with open(FileStorage.__file_path, 'r') as f:
                 dicts = json.load(f)
                 FileStorage.__objects = {}
-                for k, v in dicts.items():
+                for k, v in dicts.values():
                     obj = FileStorage.class_dict[v['__class__']](**v)
                     FileStorage.__objects[k] = obj
         except FileNotFoundError:
