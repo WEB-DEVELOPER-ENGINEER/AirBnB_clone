@@ -63,6 +63,11 @@ class testFileStorage(unittest.TestCase):
         '''
         storage_all = self.storage.all()
         self.assertIsInstance(storage_all, dict)
+        storage = FileStorage()
+        instances_dic = storage.all()
+        self.assertIsNotNone(instances_dic)
+        self.assertEqual(type(instances_dic), dict)
+        self.assertIs(instances_dic, storage._FileStorage__objects)
 
     def test_save_file_read(self):
         '''
