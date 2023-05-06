@@ -78,3 +78,19 @@ class testFileStorage(unittest.TestCase):
         with open("file.json", encoding="UTF8") as fd:
             content = json.load(fd)
         self.assertTrue(type(content) is dict)
+
+    def test_reload_empty(self):
+        """
+        Tests method: reload
+        """
+        a_storage = FileStorage()
+        try:
+            os.remove("file.json")
+        except Exception:
+            pass
+        with open("file.json", "w") as f:
+            f.write("{}")
+        with open("file.json", "r") as r:
+            for line in r:
+                self.assertEqual(line, "{}")
+        self.assertIs(a_storage.reload(), None)
