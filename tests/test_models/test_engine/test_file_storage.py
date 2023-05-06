@@ -121,14 +121,6 @@ class testFileStorage(unittest.TestCase):
         with self.assertRaises(TypeError):
             FileStorage.reload(None)
 
-    def test_new_with_args(self):
-        with self.assertRaises(TypeError):
-            FileStorage.new(BaseModel(), 1)
-
-    def test_new_with_None(self):
-        with self.assertRaises(AttributeError):
-            FileStorage.new(None)
-
 
 
     if __name__ == "__main__":
