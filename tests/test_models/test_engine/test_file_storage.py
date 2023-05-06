@@ -23,6 +23,9 @@ class testFileStorage(unittest.TestCase):
         '''
         self.storage = FileStorage()
         self.model = BaseModel()
+        self.test_len = 0
+        if os.path.isfile("file.json"):
+            self.test_len = len(self.storage.all())
 
     def tearDown(self):
         '''
@@ -94,3 +97,9 @@ class testFileStorage(unittest.TestCase):
             for line in r:
                 self.assertEqual(line, "{}")
         self.assertIs(a_storage.reload(), None)
+
+    def test_save(self):
+        self.test_len = len(self.storage.all())
+        a = BaseModel()
+        a.save()
+        self.assertEqual(len(self.storage.all()), self.test_len + 1)
