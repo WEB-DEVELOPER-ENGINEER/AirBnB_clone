@@ -1,7 +1,9 @@
 #!/usr/bin/python3
 """unittests for models/user.py"""
 import os
+import pep8
 import models
+from models.base_model import BaseModel
 import unittest
 from datetime import datetime
 from models.user import User
@@ -63,3 +65,11 @@ class TestUser(unittest.TestCase):
         '''
         user = User()
         self.assertIsInstance(user, BaseModel)
+
+    def test_user_style(self):
+        '''
+            Tests pep8 style
+        '''
+        style = pep8.StyleGuide(quiet=True)
+        p = style.check_files(['models/user.py'])
+        self.assertEqual(p.total_errors, 0, "fix pep8")
