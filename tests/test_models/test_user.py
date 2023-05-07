@@ -56,3 +56,10 @@ class TestUser(unittest.TestCase):
         self.assertTrue("first_name" in user.__dir__())
         self.assertTrue("last_name" in user.__dir__())
         self.assertTrue("password" in user.__dir__())
+
+    def test_User_inheritance(self):
+        '''
+            tests if the User class Inherits from BaseModel
+        '''
+        user = User()
+        self.assertIsInstance(user, BaseModel)
