@@ -13,6 +13,17 @@ class TestUser(unittest.TestCase):
     '''
         tests instantiation of the User class
     '''
+    @classmethod
+    def setUpClass(cls):
+        '''
+            setUp method
+        '''
+        cls.my_user = User()
+        cls.my_user.first_name = "Betty"
+        cls.my_user.last_name = "school"
+        cls.my_user.email = "airbnb@shool.com"
+        cls.my_user.password = "root"
+
     def test_no_args(self):
         '''
             tests when passing no args
@@ -73,3 +84,14 @@ class TestUser(unittest.TestCase):
         style = pep8.StyleGuide(quiet=True)
         p = style.check_files(['models/user.py'])
         self.assertEqual(p.total_errors, 0, "fix pep8")
+
+    def test_user_save(self):
+        self.my_user.save()
+        self.assertNotEqual(self.my_user.created_at, self.my_user.updated_at)
+
+    def test_user_to_dict(self):
+        self.assertEqual('to_dict' in dir(self.my_user), True)
+
+
+if __name__ == "__main__":
+    unittest.main()
