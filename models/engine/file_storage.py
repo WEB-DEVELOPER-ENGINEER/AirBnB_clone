@@ -4,7 +4,10 @@ import json
 from models.base_model import BaseModel
 import os
 from models.user import User
-
+from models.state import State
+from models.city import City
+from models.place import Place
+from models.amenity import Amenity
 
 class FileStorage:
     """serializes and deserializes instances to and from JSON file
