@@ -1,0 +1,11 @@
+#!/usr/bin/python3
+"""Public class attributes:
+    name: string - empty string"""
+from models.base_model import BaseModel
+
+
+class State(BaseModel):
+    '''
+        State class that inherits from BaseModel class
+    '''
+    name = ""
