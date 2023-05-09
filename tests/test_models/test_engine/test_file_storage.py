@@ -122,6 +122,5 @@ class testFileStorage(unittest.TestCase):
             FileStorage.reload(None)
 
 
-
-    if __name__ == "__main__":
-        unittest.main()
+if __name__ == "__main__":
+    unittest.main()
