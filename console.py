@@ -9,6 +9,7 @@ from models.city import City
 from models.place import Place
 from models.amenity import Amenity
 from models.review import Review
+import ast
 
 
 class HBNBCommand(cmd.Cmd):
@@ -184,21 +185,33 @@ class HBNBCommand(cmd.Cmd):
                     storage.save()
             elif (args[1].split('("')[0] == "update"):
                 objdict = storage.all()
-                args_string = args[1].split('("')[1].split('")')[0]
+                args_string = args[1].split('("')[1].split(')')[0]
                 args_str = args_string.split(", ")
                 instance_id = args_str[0].strip('"')
-                key = args_str[1].strip('"')
-                val = args_str[2].strip('"')
+                key_dict = args_str[1]
                 if "{}.{}".format(args[0], instance_id) not in objdict:
                     print("** no instance found **")
                 else:
-                    obj = objdict["{}.{}".format(args[0], instance_id)]
-                    if key in obj.__class__.__dict__.keys():
-                        valtype = type(obj.__class__.__dict__[key])
-                        obj.__dict__[key] = valtype(val)
-                    else:
-                        obj.__dict__[key] = val
-                    storage.save()
+                    if (key_dict[0] != "{"):
+                        key = args_str[1].strip('"')
+                        val = args_str[2].strip('"')
+                        obj = objdict["{}.{}".format(args[0], instance_id)]
+                        if key in obj.__class__.__dict__.keys():
+                            valtype = type(obj.__class__.__dict__[key])
+                            obj.__dict__[key] = valtype(val)
+                        else:
+                            obj.__dict__[key] = val
+                        storage.save()
+                    elif (key_dict[0] == "{"):
+                        dict_str = "{" + args_string.split("{")[1]
+                        dictionary = ast.literal_eval(dict_str)
+                        obj = objdict["{}.{}".format(args[0], instance_id)]
+                        for key, val in dictionary.items():
+                            if key in obj.__class__.__dict__.keys():
+                                valtype = type(obj.__class__.__dict__[key])
+                                obj.__dict__[key] = valtype(val)
+                            else:
+                                obj.__dict__[key] = val
 
 
 if __name__ == '__main__':
