@@ -8,7 +8,11 @@ The console or command interpreter create the data model and allows create, upda
 ## Features
 
 ### Command Interpreter
-
+#### Advantages of using a console
+1. Portability: A CLI (console) is often more portable than a GUI because it does not require a graphical interface to run. This means that CLI applications can be run on a wide range of systems, including servers and embedded systems, without the need for a GUI.
+2. Resource usage: CLI applications typically require less memory and disk space than GUI applications, making them ideal for use in environments with limited resources.
+3. Efficiency: A CLI can often perform tasks more quickly than a GUI because it requires fewer resources to run. The user can type commands and execute them without the need for a mouse or a lot of clicking.
+4. Flexibility: A CLI provides greater flexibility and control than a GUI because it allows the user to execute complex commands and scripts. CLI commands can be combined and piped together to create powerful workflows that automate complex tasks.
 #### Description
 
 The Command Interpreter is used to manage the whole application's functionality from the command line, such as:
