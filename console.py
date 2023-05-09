@@ -174,6 +174,14 @@ class HBNBCommand(cmd.Cmd):
                     print("** no instance found **")
                 else:
                     print(objdict["{}.{}".format(args[0], instance_id)])
+            elif (args[1].split('("')[0] == "destroy"):
+                objdict = storage.all()
+                instance_id = args[1].split('("')[1].split('")')[0]
+                if "{}.{}".format(args[0], instance_id) not in objdict:
+                    print("** no instance found **")
+                else:
+                    del objdict["{}.{}".format(args[0], instance_id)]
+                    storage.save()
 
 
 if __name__ == '__main__':
