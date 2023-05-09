@@ -146,6 +146,22 @@ class HBNBCommand(cmd.Cmd):
                 obj.__dict__[args[2]] = args[3]
             storage.save()
 
+    def default(self, line):
+        '''
+            If there is no specific command processor for a command,
+            the method default() is called with the input line as an argument
+        '''
+        args = line.split('.')
+        if not line:
+            print("** class name missing **")
+        elif args[0] not in HBNBCommand.__classes:
+            print("** class doesn't exist **")
+        elif len(args) == 2:
+            if (args[1] == "all()"):
+                instances = [i.__str__() for i in storage.all().values()
+                             if i.__class__.__name__ == args[0]]
+                print(instances)
+
 
 if __name__ == '__main__':
     HBNBCommand().cmdloop()
