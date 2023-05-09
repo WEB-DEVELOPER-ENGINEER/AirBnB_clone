@@ -167,6 +167,13 @@ class HBNBCommand(cmd.Cmd):
                     if (i.__class__.__name__ == args[0]):
                         j += 1
                 print(j)
+            elif (args[1].split('("')[0] == "show"):
+                objdict = storage.all()
+                instance_id = args[1].split('("')[1].split('")')[0]
+                if "{}.{}".format(args[0], instance_id) not in objdict:
+                    print("** no instance found **")
+                else:
+                    print(objdict["{}.{}".format(args[0], instance_id)])
 
 
 if __name__ == '__main__':
