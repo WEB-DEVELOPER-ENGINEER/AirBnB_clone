@@ -1,3 +1,4 @@
+![image](https://github.com/WEB-DEVELOPER-ENGINEER/AirBnB_clone/assets/101446375/88783e9e-fe3f-4561-a0e1-bb53878e719f)
 # Synopsis
 
 The Airbnb clone project for which we are creating a copy of the [Airbnb](https://www.airbnb.com/).
