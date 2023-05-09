@@ -182,6 +182,23 @@ class HBNBCommand(cmd.Cmd):
                 else:
                     del objdict["{}.{}".format(args[0], instance_id)]
                     storage.save()
+            elif (args[1].split('("')[0] == "update"):
+                objdict = storage.all()
+                args_string = args[1].split('("')[1].split('")')[0]
+                args_str = args_string.split(", ")
+                instance_id = args_str[0].strip('"')
+                key = args_str[1].strip('"')
+                val = args_str[2].strip('"')
+                if "{}.{}".format(args[0], instance_id) not in objdict:
+                    print("** no instance found **")
+                else:
+                    obj = objdict["{}.{}".format(args[0], instance_id)]
+                    if key in obj.__class__.__dict__.keys():
+                        valtype = type(obj.__class__.__dict__[key])
+                        obj.__dict__[key] = valtype(val)
+                    else:
+                        obj.__dict__[key] = val
+                    storage.save()
 
 
 if __name__ == '__main__':
