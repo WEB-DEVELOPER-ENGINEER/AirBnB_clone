@@ -161,6 +161,12 @@ class HBNBCommand(cmd.Cmd):
                 instances = [i.__str__() for i in storage.all().values()
                              if i.__class__.__name__ == args[0]]
                 print(instances)
+            elif (args[1] == "count()"):
+                j = 0
+                for i in storage.all().values():
+                    if (i.__class__.__name__ == args[0]):
+                        j += 1
+                print(j)
 
 
 if __name__ == '__main__':
