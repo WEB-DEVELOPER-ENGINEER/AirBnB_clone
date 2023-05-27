@@ -1,0 +1,10 @@
+footer {
+        background-color: white;
+        max-height: 60px;
+        width: 100%;
+	position: sticky;
+        text-align: center;
+        line-height: 60px;
+        border-top: 1px solid #CCCCCC;
+	margin-top: auto;
+}
